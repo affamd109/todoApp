@@ -1,8 +1,8 @@
-import TodoList from "./TodoList";
+import TodoList from "./components/TodoList";
 
 export default function App() {
 
-  
+
 
 
 
@@ -11,7 +11,7 @@ export default function App() {
 
       <div className="w-1/2" >
        <img 
-          src="/pic4.jpg" 
+          src="/pic5.jpg" 
           alt="Todo Visual" 
           className="w-full h-full object-cover" 
         />

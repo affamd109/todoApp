@@ -1,6 +1,8 @@
 import List from '@mui/material/List';
 import TodoItem from './TodoItem';
 import { useState } from 'react';
+import Todoform from './Todoform';
+
 
 
 export default function TodoList() {
@@ -32,11 +34,20 @@ export default function TodoList() {
         })
     }
 
+    const addTodo = (text) =>{
+        setTodos(prevTodo =>{
+            return [...prevTodo , { id:9 , text:text , completed:false } ]
+        })
+    }
+
 
     return (
-        <List dense sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+        <List className='rounded-lg h-100 overflow-scroll' dense sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+            <Todoform addTodo={addTodo} />
+
+
             {todos.map((todo) => ( //If u are using () then no need to write return , but if u are using {} , then u have to write return
-            
+
                 <TodoItem todo={todo} key={todo.id} remove={() => removeTodo(todo.id)}
                 toggle={() => toggleTodo(todo.id)} />
                
