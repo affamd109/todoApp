@@ -19,11 +19,26 @@ export default function TodoList() {
         })
     }
 
+    const toggleTodo = (id) =>{
+        setTodos((prevTodo) =>{
+            return prevTodo.map(todo =>{
+                if(todo.id === id){
+                    return {...todo , completed : !todo.completed}
+                }else{
+                    return todo;
+                }
+
+            })
+        })
+    }
+
 
     return (
         <List dense sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
             {todos.map((todo) => ( //If u are using () then no need to write return , but if u are using {} , then u have to write return
-                <TodoItem todo={todo} key={todo.id} remove={() => removeTodo(todo.id)} />
+            
+                <TodoItem todo={todo} key={todo.id} remove={() => removeTodo(todo.id)}
+                toggle={() => toggleTodo(todo.id)} />
                
             ))}
 

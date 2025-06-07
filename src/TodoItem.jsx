@@ -5,49 +5,40 @@ import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Checkbox from '@mui/material/Checkbox';
 import Avatar from '@mui/material/Avatar';
-import { useState } from 'react';
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
+import ListItemIcon from '@mui/material/ListItemIcon';
 
 
 
-export default function TodoItem({ todo, remove }) {
+
+
+export default function TodoItem({ todo, remove  , toggle}) {
 
     const labelId = `checkbox-list-secondary-label-${todo.id}`;
 
-    return (
-        <ListItem
-
+   return (
+          <ListItem
+            key={todo.id}
             secondaryAction={
-                <div className='flex gap-x-3' >
-
-                    <Checkbox
-                        edge="end"
-                        onChange={() => alert("HIII")}
-                        checked={todo.completed}
-                        inputProps={{ 'aria-labelledby': labelId }} />
-
-                    <IconButton edge="end" onClick={remove}>
-                        <DeleteIcon />
-                    </IconButton>
-
-
-                </div>
-
-
-
+              <IconButton edge="end" aria-label="comments" onClick={remove} >
+                <DeleteIcon />
+              </IconButton>
             }
-            disablePadding >
-
-            <ListItemButton>
-                <ListItemAvatar>
-                    <Avatar
-                        alt={`Avatar n°${todo.id + 1}`}
-                        src={`/static/images/avatar/${todo.id + 1}.jpg`}
-                    />
-                </ListItemAvatar>
-                <ListItemText id={labelId} primary={todo.text} />
+            disablePadding
+          >
+            <ListItemButton role={undefined} onClick={toggle} dense>
+              <ListItemIcon>
+                <Checkbox
+                  edge="start"
+                  checked={todo.completed}
+                  tabIndex={-1}
+                  disableRipple
+                  inputProps={{ 'aria-labelledby': labelId }}
+                />
+              </ListItemIcon>
+              <ListItemText id={labelId} primary={`Line item ${todo.id + 1}`} />
             </ListItemButton>
-        </ListItem>
-    );
+          </ListItem>
+        );
 }
