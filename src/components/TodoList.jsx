@@ -19,12 +19,6 @@ const getInitialData = () => {
 
 export default function TodoList() {
 
-    const initialTodos = [
-        { id: uuid(), text: "walk the dog", completed: false },
-        { id: uuid(), text: "walk the cat", completed: false },
-        { id: uuid(), text: "walk the fish", completed: true },
-        { id: uuid(), text: "walk the lion", completed: false }
-    ];
 
 
     const [todos, setTodos] = useState(getInitialData);
@@ -75,7 +69,7 @@ export default function TodoList() {
                     alt="empty"
                     className="w-15 h-15 " />
 
-                    <h1 className='text-4xl mx-3 mt-4  ' >To-Do List</h1>
+                    <h1 className='text-4xl mx-3 mt-4 font-serif ' >To-Do List</h1>
 
                     
             </div>
@@ -83,13 +77,13 @@ export default function TodoList() {
 
 
             <Todoform addTodo={addTodo} />
+            
+            {todos.length>0 && <button onClick={handleClear}
 
-            <button onClick={handleClear}
+                className="my-2 px-3 py-1 m-4 bg-red-500 text-white cursor-pointer rounded-xl hover:bg-red-600" >
+                Clear All  </button> }
 
-                className="my-4 px-4 py-2 m-4 bg-red-500 text-white rounded hover:bg-red-600" >
-                Clear All Todos! </button>
-
-
+            
 
             {todos.length === 0 ? (
                 <EmptyTodo />
