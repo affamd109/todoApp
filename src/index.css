@@ -2,5 +2,6 @@
 
 
 body{
-    @apply bg-gradient-to-tr from-[#0f0f0f] via-[#1a1a1a] to-[#2b1d12]
+    @apply bg-gradient-to-tr from-[#f8f7f7] via-[#f8b487] to-[#edf9aa]
 }
+

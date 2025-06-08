@@ -1,19 +1,36 @@
 import List from '@mui/material/List';
 import TodoItem from './TodoItem';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Todoform from './Todoform';
+import {v4 as uuid} from "uuid";
+
+
+const getInitialData = () =>{
+    const data = JSON.parse(localStorage.getItem("todos"));
+    if(!data){
+        return [];
+    }else{
+        return data;
+    }
+}
 
 
 
 export default function TodoList() {
+
     const initialTodos = [
-        { id: 1, text: "walk the dog", completed: false },
-        { id: 2, text: "walk the cat", completed: false },
-        { id: 3, text: "walk the fish", completed: true },
-        { id: 4, text: "walk the lion", completed: false }
+        { id: uuid(), text: "walk the dog", completed: false },
+        { id: uuid(), text: "walk the cat", completed: false },
+        { id: uuid(), text: "walk the fish", completed: true },
+        { id: uuid(), text: "walk the lion", completed: false }
     ];
 
-    const [todos, setTodos] = useState(initialTodos);
+    
+    const [todos, setTodos] = useState(getInitialData);
+
+    useEffect(() =>{
+        localStorage.setItem("todos" , JSON.stringify(todos))
+    } , [todos] );  //Whenever todos is changing then useEffect function runs
 
     const removeTodo = (id) =>{
         setTodos(prevTodo =>{
@@ -36,13 +53,13 @@ export default function TodoList() {
 
     const addTodo = (text) =>{
         setTodos(prevTodo =>{
-            return [...prevTodo , { id:9 , text:text , completed:false } ]
+            return [...prevTodo , { id : uuid() , text:text , completed:false } ]
         })
     }
 
 
     return (
-        <List className='rounded-lg h-100 overflow-scroll' dense sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+        <List className='rounded-xl h-120 overflow-scroll' dense sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
             <Todoform addTodo={addTodo} />
 
 

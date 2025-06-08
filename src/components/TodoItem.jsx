@@ -20,7 +20,7 @@ export default function TodoItem({ todo, remove  , toggle}) {
             key={todo.id}
             secondaryAction={
               <IconButton edge="end" aria-label="comments" onClick={remove} >
-                <DeleteIcon />
+                <DeleteIcon  sx={{ color: "red" }} />
               </IconButton>
             }
             disablePadding
