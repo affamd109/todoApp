@@ -65,7 +65,7 @@ export default function TodoList() {
             sx={{ bgcolor: 'background.paper' }}  >
 
             <div className='m-4 flex '  >
-                <img src="../public/todo2.png"
+                <img src="../todo2.png"
                     alt="empty"
                     className="w-15 h-15 " />
 
