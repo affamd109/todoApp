@@ -74,8 +74,6 @@ export default function TodoList() {
                     
             </div>
 
-
-
             <Todoform addTodo={addTodo} />
             
             {todos.length>0 && <button onClick={handleClear}
